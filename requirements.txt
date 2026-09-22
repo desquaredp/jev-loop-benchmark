@@ -1,0 +1,7 @@
+anthropic>=0.49
+openai==2.54.0
+python-dotenv==1.2.3
+rich==15.0.0
+swebench==4.0.3
+tiktoken==0.14.0
+
