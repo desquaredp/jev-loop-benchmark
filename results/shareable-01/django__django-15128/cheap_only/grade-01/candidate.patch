@@ -1,0 +1,19 @@
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index aaf35ee37c..de8f142aae 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -572,7 +572,13 @@ class Query(BaseExpression):
+         if self.distinct_fields != rhs.distinct_fields:
+             raise TypeError('Cannot combine queries with different distinct fields.')
+ 
+-        # Work out how to relabel the rhs aliases, if necessary.
++        # Work out how to relabel the rhs aliases, if necessary. The aliases
++        # generated while adding rhs joins must not collide with aliases in
++        # rhs itself. Otherwise a mapping such as T4 -> T5, T5 -> T6 can be
++        # produced and relabelling a nested query would change an alias twice.
++        # Use a clone since bump_prefix() relabels the query in place.
++        rhs = rhs.clone()
++        rhs.bump_prefix(self)
+         change_map = {}
+         conjunction = (connector == AND)
+ 

@@ -1,0 +1,92 @@
+{
+  "task": {
+    "id": "django__django-13344",
+    "issue": "Coroutine passed to the first middleware's process_response() instead of HttpResponse.\nDescription\n\t\nLike the title says, using ASGI (+ uvicorn in my case), the first middleware (according to the list in settings.py) receives a coroutine as its response parameter, while all other middlewares down the line receive a django.http.response.HttpResponse object.\nThis seems to have caused an issue in the django-cors-headers package which is often placed first in order:\n\u200bhttps://github.com/adamchainz/django-cors-headers/issues/558\nHow to reproduce:\nSet up a django 3.1 project with an async server (uvicorn in my case)\nCreate a dummy class-based middleware that prints the types of arguments it receives in its process_response method:\nclass DummyMiddleware(MiddlewareMixin):\n\tdef process_response(self, request, response):\n\t\tprint(request.__class__, response.__class__)\nSet up the middleware as the first one in settings.py:\nMIDDLEWARE = [\n\t'django_uvicorn_test.middleware.DummyMiddleware',\n\t'django.middleware.security.SecurityMiddleware',\n ...\nLaunch the server and perform any request, observe console output:\n <class 'django.core.handlers.asgi.ASGIRequest'> <class 'coroutine'> \nMove the middleware down on the list, restart the server and perform a request again:\n <class 'django.core.handlers.asgi.ASGIRequest'> <class 'django.http.response.HttpResponse'>\n",
+    "base_commit": "e39e727ded673e74016b5d3658d23cbe20234d11",
+    "image": "swebench/sweb.eval.x86_64.django_1776_django-13344:latest",
+    "baseline_order": [
+      "django/core/handlers/base.py",
+      "django/contrib/redirects/middleware.py",
+      "django/contrib/flatpages/middleware.py",
+      "django/core/handlers/asgi.py",
+      "django/utils/decorators.py",
+      "django/contrib/staticfiles/handlers.py",
+      "django/middleware/cache.py",
+      "django/views/decorators/cache.py",
+      "django/middleware/locale.py",
+      "django/utils/deprecation.py",
+      "django/middleware/http.py",
+      "django/middleware/csrf.py",
+      "django/core/asgi.py",
+      "django/contrib/auth/middleware.py",
+      "django/contrib/sessions/middleware.py",
+      "django/http/__init__.py",
+      "django/template/response.py",
+      "django/contrib/sites/middleware.py",
+      "django/core/handlers/exception.py",
+      "django/contrib/contenttypes/views.py"
+    ],
+    "lines": {
+      "django/core/handlers/base.py": 244,
+      "django/contrib/redirects/middleware.py": 1,
+      "django/contrib/flatpages/middleware.py": 1,
+      "django/core/handlers/asgi.py": 59,
+      "django/utils/decorators.py": 148,
+      "django/contrib/staticfiles/handlers.py": 1,
+      "django/middleware/cache.py": 32,
+      "django/views/decorators/cache.py": 16,
+      "django/middleware/locale.py": 1,
+      "django/utils/deprecation.py": 103,
+      "django/middleware/http.py": 1,
+      "django/middleware/csrf.py": 1,
+      "django/core/asgi.py": 1,
+      "django/contrib/auth/middleware.py": 1,
+      "django/contrib/sessions/middleware.py": 1,
+      "django/http/__init__.py": 16,
+      "django/template/response.py": 21,
+      "django/contrib/sites/middleware.py": 1,
+      "django/core/handlers/exception.py": 1,
+      "django/contrib/contenttypes/views.py": 85
+    },
+    "whole_files": true,
+    "prices": {
+      "gpt-5.6-luna": {
+        "input": 0.2,
+        "cached": 0.02,
+        "output": 1.2
+      },
+      "gpt-6-astra": {
+        "input": 10.0,
+        "cached": 1.0,
+        "output": 50.0
+      }
+    },
+    "cheap": "gpt-5.6-luna",
+    "strong": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "max_completion_tokens": 8000,
+    "budget_usd": 12.0,
+    "token_reservation": true,
+    "repair_policy_v2": true,
+    "django_subtest_parser": true,
+    "providers": {
+      "gpt-5.6-luna": "openai",
+      "gpt-6-astra": "openai"
+    },
+    "grading_dataset": "runs/shareable-01/django__django-13344/grader-dataset.json"
+  },
+  "source_preflight": "runs/shareable-01/django__django-13344/preflight/result.json",
+  "source_task_sha256": "e8d26e5cb352f960de217a9a5146ff3689fe5707fc72c2702d99b5a1fd7d7ef8",
+  "implementation": {
+    "repo_agent.py": "395de9e1eded8e42344f00f98d450bdc853e47c0c92fc838faec65feb9c3c74b",
+    "repo_tools.py": "134001a78f5f419cc06feebd32fbe0550adf1a4e3208f4ab1a23dc940724e168",
+    "loop.py": "1c6e9fe7dee0f522faff874278aced688a1498ca11daee030810a9acbf8a4bbb",
+    "grader.py": "b37e9f6656013c0447310cb243641a4346e77cfa223f2bf73c6039b4f5d02f35",
+    "providers.py": "d7558a45a112b95a3fe47b6845b51b975007f51818102b445be7fab8dd0b9a22",
+    "config.py": "2a1c82ebd1530efed7ce0f4fbae53c05bc0128fce8fd51599da7180a78650394",
+    "spike.py": "fd0a31abff9f89c49687602bbfc2ea5e9f1ece99da5ccde4856fef6640a79e6a",
+    "split_router.py": "dd4a39da17eda3f7a88f12b7c8cd37a0de7da5a1f16016e9e5a4cdf512a89c95"
+  },
+  "grading": "Official-test-guided repair, not blind benchmark validation. Every arm has full repository tools. No cached candidate whitelist.",
+  "cost_scope": "All model and live JEV calls; excludes local search, test compute, setup and human effort."
+}

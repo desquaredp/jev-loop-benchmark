@@ -1,0 +1,22 @@
+{
+  "status": "grade_limit",
+  "official_resolved": null,
+  "error": null,
+  "patch_sha256": "ecfef630efe73e987e0537ce71b5a5663e4013c0def4411e576e9a996afcd2ab",
+  "grades": 6,
+  "consulted_strong": false,
+  "wall_seconds": 1081.1767322500236,
+  "agent_work_seconds": 373.1767322500236,
+  "grading_wall_seconds": 708.0,
+  "timing_source": "filesystem_birthtime_backfill",
+  "final_grade": null,
+  "arm": "cheap_only",
+  "resolved": false,
+  "cost": 0.23843771000000002,
+  "calls": {
+    "cheap": 32,
+    "strong": 0,
+    "jev": 0
+  },
+  "billing_complete": true
+}

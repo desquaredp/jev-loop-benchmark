@@ -1,0 +1,136 @@
+2026-09-22 01:43:23,985 - INFO - Creating container for astropy__astropy-13579...
+2026-09-22 01:43:24,007 - INFO - Container for astropy__astropy-13579 created: 03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a
+2026-09-22 01:43:24,174 - INFO - Container for astropy__astropy-13579 started: 03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a
+2026-09-22 01:43:24,174 - INFO - Intermediate patch for astropy__astropy-13579 written to logs/run_evaluation/unfixed-transport-retry/unfixed-transport-retry/astropy__astropy-13579/patch.diff, now applying to container...
+2026-09-22 01:43:24,448 - INFO - >>>>> Applied Patch:
+Checking patch astropy/wcs/wcsapi/wrappers/sliced_wcs.py...
+Applied patch astropy/wcs/wcsapi/wrappers/sliced_wcs.py cleanly.
+
+2026-09-22 01:43:25,619 - INFO - Git diff before:
+diff --git a/astropy/wcs/wcsapi/wrappers/sliced_wcs.py b/astropy/wcs/wcsapi/wrappers/sliced_wcs.py
+index d7605b078..8caa8f958 100644
+--- a/astropy/wcs/wcsapi/wrappers/sliced_wcs.py
++++ b/astropy/wcs/wcsapi/wrappers/sliced_wcs.py
+@@ -306,3 +306,5 @@ class SlicedLowLevelWCS(BaseWCSWrapper):
+     @property
+     def axis_correlation_matrix(self):
+         return self._wcs.axis_correlation_matrix[self._world_keep][:, self._pixel_keep]
++
++# Unfixed grading control.
+2026-09-22 01:43:25,619 - INFO - Eval script for astropy__astropy-13579 written to logs/run_evaluation/unfixed-transport-retry/unfixed-transport-retry/astropy__astropy-13579/eval.sh; copying to container...
+2026-09-22 01:44:56,487 - INFO - Test runtime: 90.78 seconds
+2026-09-22 01:44:56,487 - INFO - Test output for astropy__astropy-13579 written to logs/run_evaluation/unfixed-transport-retry/unfixed-transport-retry/astropy__astropy-13579/test_output.txt
+2026-09-22 01:44:56,576 - ERROR - Error in evaluating model for astropy__astropy-13579: 409 Client Error for http+docker://localhost/v1.41/containers/03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a/exec: Conflict ("Container 03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a is not running")
+Traceback (most recent call last):
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 409 Client Error: Conflict for url: http+docker://localhost/v1.41/containers/03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a/exec
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/swebench/harness/eval.py", line 206, in run_instance
+    container.exec_run(
+    ~~~~~~~~~~~~~~~~~~^
+        "git -c core.fileMode=false diff", workdir=DOCKER_WORKDIR
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/models/containers.py", line 209, in exec_run
+    resp = self.client.api.exec_create(
+        self.id, cmd, stdout=stdout, stderr=stderr, stdin=stdin, tty=tty,
+        privileged=privileged, user=user, environment=environment,
+        workdir=workdir,
+    )
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/exec_api.py", line 78, in exec_create
+    return self._result(res, True)
+           ~~~~~~~~~~~~^^^^^^^^^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 409 Client Error for http+docker://localhost/v1.41/containers/03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a/exec: Conflict ("Container 03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a is not running")
+
+Check (logs/run_evaluation/unfixed-transport-retry/unfixed-transport-retry/astropy__astropy-13579/run_instance.log) for more information.
+2026-09-22 01:44:56,576 - INFO - Attempting to stop container sweb.eval.astropy__astropy-13579.unfixed-transport-retry...
+2026-09-22 01:44:56,580 - INFO - Attempting to remove container sweb.eval.astropy__astropy-13579.unfixed-transport-retry...
+2026-09-22 01:44:56,585 - INFO - Failed to remove container sweb.eval.astropy__astropy-13579.unfixed-transport-retry: 409 Client Error for http+docker://localhost/v1.41/containers/03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a?v=False&link=False&force=True: Conflict ("removal of container 03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a is already in progress")
+Traceback (most recent call last):
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 409 Client Error: Conflict for url: http+docker://localhost/v1.41/containers/03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a/exec
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/swebench/harness/eval.py", line 206, in run_instance
+    container.exec_run(
+    ~~~~~~~~~~~~~~~~~~^
+        "git -c core.fileMode=false diff", workdir=DOCKER_WORKDIR
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/models/containers.py", line 209, in exec_run
+    resp = self.client.api.exec_create(
+        self.id, cmd, stdout=stdout, stderr=stderr, stdin=stdin, tty=tty,
+        privileged=privileged, user=user, environment=environment,
+        workdir=workdir,
+    )
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/exec_api.py", line 78, in exec_create
+    return self._result(res, True)
+           ~~~~~~~~~~~~^^^^^^^^^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 409 Client Error for http+docker://localhost/v1.41/containers/03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a/exec: Conflict ("Container 03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a is not running")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 409 Client Error: Conflict for url: http+docker://localhost/v1.41/containers/03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a?v=False&link=False&force=True
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/swebench/harness/docker_utils.py", line 164, in cleanup_container
+    container.remove(force=True)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/models/containers.py", line 368, in remove
+    return self.client.api.remove_container(self.id, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/container.py", line 1037, in remove_container
+    self._raise_for_status(res)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 409 Client Error for http+docker://localhost/v1.41/containers/03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a?v=False&link=False&force=True: Conflict ("removal of container 03e624f1f52a0dff4331f01146060f2d2c3862be82039f4c42990a7a6d51cd2a is already in progress")
+

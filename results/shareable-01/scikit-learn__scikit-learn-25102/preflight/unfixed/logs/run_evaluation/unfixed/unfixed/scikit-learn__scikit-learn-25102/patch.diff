@@ -1,0 +1,10 @@
+diff --git a/sklearn/utils/validation.py b/sklearn/utils/validation.py
+index dd0c00760..a38a1db76 100644
+--- a/sklearn/utils/validation.py
++++ b/sklearn/utils/validation.py
+@@ -2082,3 +2082,5 @@ def _check_monotonic_cst(estimator, monotonic_cst=None):
+                 f"X has {estimator.n_features_in_} features."
+             )
+     return monotonic_cst
++
++# Unfixed grading control.

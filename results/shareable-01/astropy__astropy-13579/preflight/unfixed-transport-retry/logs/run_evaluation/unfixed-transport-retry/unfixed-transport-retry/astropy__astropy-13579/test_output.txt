@@ -1,0 +1,785 @@
++ '[' -f /opt/conda/etc/profile.d/conda.sh ']'
++ '[' -f /opt/miniconda3/etc/profile.d/conda.sh ']'
++ source /opt/miniconda3/etc/profile.d/conda.sh
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ '[' -z '' ']'
+++ export CONDA_SHLVL=0
+++ CONDA_SHLVL=0
+++ '[' -n '' ']'
+++++ dirname /opt/miniconda3/bin/conda
++++ dirname /opt/miniconda3/bin
+++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export PATH
+++ '[' -z '' ']'
+++ PS1=
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1=
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=1
+++ CONDA_SHLVL=1
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   astropy/wcs/wcsapi/wrappers/sliced_wcs.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 62194260181d107f2f6630d4588887fbf46f5a0c
+Author: SWE-bench <setup@swebench.com>
+Date:   Thu Aug 13 00:51:37 2026 +0000
+
+    SWE-bench
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 7a3b85fc9..83f08ed12 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools",
++requires = ["setuptools==68.0.0",
+             "setuptools_scm>=6.2",
+             "wheel",
+             "cython==0.29.30",
++ git -c core.fileMode=false diff 0df94ff7097961e92fd7812036a24b145bc13ca8
+diff --git a/astropy/wcs/wcsapi/wrappers/sliced_wcs.py b/astropy/wcs/wcsapi/wrappers/sliced_wcs.py
+index d7605b078..8caa8f958 100644
+--- a/astropy/wcs/wcsapi/wrappers/sliced_wcs.py
++++ b/astropy/wcs/wcsapi/wrappers/sliced_wcs.py
+@@ -306,3 +306,5 @@ class SlicedLowLevelWCS(BaseWCSWrapper):
+     @property
+     def axis_correlation_matrix(self):
+         return self._wcs.axis_correlation_matrix[self._world_keep][:, self._pixel_keep]
++
++# Unfixed grading control.
+diff --git a/pyproject.toml b/pyproject.toml
+index 7a3b85fc9..83f08ed12 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools",
++requires = ["setuptools==68.0.0",
+             "setuptools_scm>=6.2",
+             "wheel",
+             "cython==0.29.30",
++ '[' -f /opt/conda/etc/profile.d/conda.sh ']'
++ '[' -f /opt/miniconda3/etc/profile.d/conda.sh ']'
++ source /opt/miniconda3/etc/profile.d/conda.sh
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ '[' -z x ']'
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(testbed) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_SHLVL=1
+++ CONDA_SHLVL=1
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install -e '.[test]' --verbose
+Using pip 24.2 from /opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip (python 3.9)
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Running command pip subprocess to install build dependencies
+  Using pip 24.2 from /opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip (python 3.9)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/5d/40/e1e72872c6354b306daef1703549e8e83b4d43cfea356311bf722a043752/setuptools-83.0.0-py3-none-any.whl (from https://pypi.org/simple/setuptools/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/34/26/f5d29e25ffdb535afef2d35cdb55b325298f96debd670da4c325e08d70f4/setuptools-83.0.0.tar.gz (from https://pypi.org/simple/setuptools/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/95/9c/c510029fc6ef33a6275cd2c5d3cecd6613dfd6aa401d57c54f1c18852ccf/setuptools-84.0.0-py3-none-any.whl (from https://pypi.org/simple/setuptools/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/6d/44/f5da03a8ef95d369145c5bb53050e7877c9f3d312e128605fd9504829143/setuptools-84.0.0.tar.gz (from https://pypi.org/simple/setuptools/) (requires-python:>=3.10)
+  Collecting setuptools==68.0.0
+    Obtaining dependency information for setuptools==68.0.0 from https://files.pythonhosted.org/packages/c7/42/be1c7bbdd83e1bfb160c94b9cafd8e25efc7400346cf7ccdbdb452c467fa/setuptools-68.0.0-py3-none-any.whl.metadata
+    Using cached setuptools-68.0.0-py3-none-any.whl.metadata (6.4 kB)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/36/b3/96902173a2ed9527c930380ceddaf827f72e70f38ff8e68077a14a218756/setuptools_scm-10.0.1-py3-none-any.whl (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/7b/e4/191018d2acb4c5610fc187ccdaf44de47bfbbd5365f5cbfc9236244da9dd/setuptools_scm-10.0.1.tar.gz (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/2f/b4/94dcb28fe25c1c8e14547bbe5115aee44f920e5e4796e3ead7d682b15b6b/setuptools_scm-10.0.2-py3-none-any.whl (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/77/67/d68809cc1abb0df437f9d21fe1928c282fd13ef158671a7b60bfe2e65940/setuptools_scm-10.0.2.tar.gz (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/38/12/943d4220dfe5753ece086fdef0f6e405c9394670e998a7806b930a084b5c/setuptools_scm-10.0.3-py3-none-any.whl (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/be/ec/855654011b4b02037c7c56c4678c02934ed218dd218ba1b0c74ada6ada3b/setuptools_scm-10.0.3.tar.gz (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/16/84/dd5be4e461a73db2c67cf4625021513f3131a3ad650ad0d2a1fa85c5e83a/setuptools_scm-10.0.4-py3-none-any.whl (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/b4/73/858bbb44b7f20c611b35bd66708cfb246cd0b0a98972b9d8b886bde21da0/setuptools_scm-10.0.4.tar.gz (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/5c/e1/342c4434df56aa537f6ce7647eefee521d96fbb828b08acd709865767652/setuptools_scm-10.0.5-py3-none-any.whl (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/a5/b1/2a6a8ecd6f9e263754036a0b573360bdbd6873b595725e49e11139722041/setuptools_scm-10.0.5.tar.gz (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/fa/a8/3e86057d0d6274e57b9b0b40cb14b90832552c33a8f855b3675843686284/setuptools_scm-10.1.1-py3-none-any.whl (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/a6/3e/edb74671eca6429f375244d1d6395c11b7d4832cda772e4c630141e121c7/setuptools_scm-10.1.1.tar.gz (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/be/6b/209c1eb9c92c49d6bbe080ee8ee54d580955f6bd0de37fd5104aa0c51d35/setuptools_scm-10.1.2-py3-none-any.whl (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/14/f6/4226baf8e38db72465f94f9a3ac81ed16be39bc773c4d6d13af342d3dd94/setuptools_scm-10.1.2.tar.gz (from https://pypi.org/simple/setuptools-scm/) (requires-python:>=3.10)
+  Collecting setuptools_scm>=6.2
+    Obtaining dependency information for setuptools_scm>=6.2 from https://files.pythonhosted.org/packages/4b/00/e9c0591b77186f6c1a8479500456ee72cd30730836c58b7a8a2654909c23/setuptools_scm-10.2.3-py3-none-any.whl.metadata
+    Downloading setuptools_scm-10.2.3-py3-none-any.whl.metadata (6.7 kB)
+  Collecting wheel
+    Obtaining dependency information for wheel from https://files.pythonhosted.org/packages/2e/29/69cfbb602cd91690c55d38ba9fe53e6a7e76a6fa647bf38f19c138d25449/wheel-0.48.0-py3-none-any.whl.metadata
+    Using cached wheel-0.48.0-py3-none-any.whl.metadata (2.3 kB)
+  Collecting cython==0.29.30
+    Obtaining dependency information for cython==0.29.30 from https://files.pythonhosted.org/packages/a7/c6/3af0df983ba8500831fdae19a515be6e532da7683ab98e031d803e6a8d03/Cython-0.29.30-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl.metadata
+    Using cached Cython-0.29.30-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl.metadata (2.8 kB)
+  Collecting oldest-supported-numpy
+    Obtaining dependency information for oldest-supported-numpy from https://files.pythonhosted.org/packages/dc/5c/e3c84cfdd488701aa074b22cf5bd227fb15d26e1d55a66d9088c39afa123/oldest_supported_numpy-2023.12.21-py3-none-any.whl.metadata
+    Using cached oldest_supported_numpy-2023.12.21-py3-none-any.whl.metadata (9.8 kB)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/88/ff/5a7cd8c9698628b3c04215ee3a96c69865477f451b4f096682e78d085bfc/extension_helpers-1.3.0-py3-none-any.whl (from https://pypi.org/simple/extension-helpers/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/8e/b1/73ce2924fe46281faf31567e96fb9eee4eca02fd1cb852562bb2971e9df1/extension_helpers-1.3.0.tar.gz (from https://pypi.org/simple/extension-helpers/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/f8/fb/f9a88ccea5377736d5d1e53c8a6c70207178cdc1ebbf305a50a610cbb751/extension_helpers-1.4.0-py3-none-any.whl (from https://pypi.org/simple/extension-helpers/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/24/51/d03359b683ed288b34d713dea97d2aee87a9bd866af1652554d9f643b47d/extension_helpers-1.4.0.tar.gz (from https://pypi.org/simple/extension-helpers/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/09/cd/f6a3d87d7cb5d42798a0de26ccfc84d55cd441f4a9010257cc95f97afc0c/extension_helpers-1.5.0-py3-none-any.whl (from https://pypi.org/simple/extension-helpers/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/51/df/b8d87e4161e83a0d8db8564fba4758e2cd1e58ae0f5afec827ca7883919d/extension_helpers-1.5.0.tar.gz (from https://pypi.org/simple/extension-helpers/) (requires-python:>=3.10)
+  Collecting extension-helpers
+    Obtaining dependency information for extension-helpers from https://files.pythonhosted.org/packages/b3/0e/22599eac9e50f4274e78e47cef7e760d7a1bb2f0d0fdfb0bb5b0d2da263a/extension_helpers-1.2.0-py3-none-any.whl.metadata
+    Using cached extension_helpers-1.2.0-py3-none-any.whl.metadata (2.2 kB)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/65/e9/ee8aff785e6682ab5b45dcd80a6a822bea6bd6f5002854b9e2cf2b3c59db/vcs_versioning-1.0.1-py3-none-any.whl (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/72/4b/3a429205c14e8d342fef34fced00b53bdebcab01ced0db6f01c39d792a48/vcs_versioning-1.0.1.tar.gz (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/61/c8/fba51718114acac3e26092f6bd7400203aee409c7ea6be9c0a41d3926ade/vcs_versioning-1.1.0-py3-none-any.whl (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/2e/98/faceba61c1ae1e6f403eebcc2a47a3ca4539282b2f091a1e9ee6b3f53f6a/vcs_versioning-1.1.0.tar.gz (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/e6/60/73603fbcdbe5e803855bcce4414f94eaeed449083bd8183e67161af78188/vcs_versioning-1.1.1-py3-none-any.whl (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/49/42/d97a7795055677961c63a1eef8e7b19d5968ed992ed3a70ab8eb012efad8/vcs_versioning-1.1.1.tar.gz (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/36/51/b9b812b8d09584d8cdfc4c19328e5a86e72f6da310d529cc009d194ac6a7/vcs_versioning-2.0.1-py3-none-any.whl (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/c6/5d/e6c5d8be9f637b7ac6cb83c2c51675c431092b76543866f9c152f3321a76/vcs_versioning-2.0.1.tar.gz (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/fd/d6/6dd336b5534256894609db8a92c1511329c9947a72aba356fd98b20d4fea/vcs_versioning-2.1.0-py3-none-any.whl (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/9f/21/16148a6a30d0d65bf4e78ae0991ac7e3c56af113854787c91f2cbfc3525c/vcs_versioning-2.1.0.tar.gz (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/74/99/0d5c1fc5c69f4d3d96dcc3776a7da700d1c8b4ee6821e0affc5099cbdc8e/vcs_versioning-2.1.1-py3-none-any.whl (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/d6/ba/b64191fdd9b7a42a976ee465050d09b859c4cef75a56951266c6ab6ea96a/vcs_versioning-2.1.1.tar.gz (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/38/62/6fe8d9f670980e9e1c879eed5653cd24b6015a892873c206b4ae3fd35526/vcs_versioning-2.1.2-py3-none-any.whl (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/65/8b/4c53c4c161d484e74685fd03768f8874c0beb96c549a58011d3e456f61c9/vcs_versioning-2.1.2.tar.gz (from https://pypi.org/simple/vcs-versioning/) (requires-python:>=3.10)
+  Collecting vcs-versioning<3,>=2.3.2.dev0 (from setuptools_scm>=6.2)
+    Obtaining dependency information for vcs-versioning<3,>=2.3.2.dev0 from https://files.pythonhosted.org/packages/d7/20/29378edc8d7d2ce41892adc1356f4c6c6ae03b945d04ca6ade61afa3d5dc/vcs_versioning-2.4.1-py3-none-any.whl.metadata
+    Downloading vcs_versioning-2.4.1-py3-none-any.whl.metadata (1.7 kB)
+  Collecting packaging>=20 (from setuptools_scm>=6.2)
+    Obtaining dependency information for packaging>=20 from https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl.metadata
+    Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+  Collecting tomli>=1 (from setuptools_scm>=6.2)
+    Obtaining dependency information for tomli>=1 from https://files.pythonhosted.org/packages/7b/61/cceae43728b7de99d9b847560c262873a1f6c98202171fd5ed62640b494b/tomli-2.4.1-py3-none-any.whl.metadata
+    Using cached tomli-2.4.1-py3-none-any.whl.metadata (10 kB)
+  Collecting typing-extensions>=4.1 (from setuptools_scm>=6.2)
+    Obtaining dependency information for typing-extensions>=4.1 from https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl.metadata
+    Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/54/a4/f8188c4f3e07f7737683588210c073478abcb542048cf4ab6fedad0b458a/numpy-2.1.0.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/59/5f/9003bb3e632f2b58f5e3a3378902dcc73c5518070736c6740fe52454e8e1/numpy-2.1.1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/4b/d1/8a730ea07f4a37d94f9172f4ce1d81064b7a64766b460378be278952de75/numpy-2.1.2.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/25/ca/1166b75c21abd1da445b97bf1fa2f14f423c6cfb4fc7c4ef31dccf9f6a94/numpy-2.1.3.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/47/1b/1d565e0f6e156e1522ab564176b8b29d71e13d8caf003a08768df3d5cec5/numpy-2.2.0.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/f2/a5/fdbf6a7871703df6160b5cf3dd774074b086d278172285c52c2758b76305/numpy-2.2.1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/ec/d0/c12ddfd3a02274be06ffc71f3efc6d0e457b0409c4481596881e748cb264/numpy-2.2.2.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/fb/90/8956572f5c4ae52201fdec7ba2044b2c882832dcec7d5d0922c9e9acf2de/numpy-2.2.3.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/e1/78/31103410a57bc2c2b93a3597340a8119588571f6a4539067546cb9a0bfac/numpy-2.2.4.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/dc/b2/ce4b867d8cd9c0ee84938ae1e6a6f7926ebf928c9090d036fc3c6a04f946/numpy-2.2.5.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.10'): https://files.pythonhosted.org/packages/76/21/7d2a95e4bba9dc13d043ee156a356c0a8f0c6309dff6b21b4d71a073b8a8/numpy-2.2.6.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.10)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/f3/db/8e12381333aea300890829a0a36bfa738cac95475d88982d538725143fd9/numpy-2.3.0.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/2e/19/d7c972dfe90a353dbd3efbbe1d14a5951de80c99c9dc1b93cd998d51dc0f/numpy-2.3.1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/37/7d/3fec4199c5ffb892bed55cff901e4f39a58c81df9c44c280499e92cad264/numpy-2.3.2.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/d0/19/95b3d357407220ed24c139018d2518fab0a61a948e68286a25f1a4d049ff/numpy-2.3.3.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/b5/f4/098d2270d52b41f1bd7db9fc288aaa0400cb48c2a3e2af6fa365d9720947/numpy-2.3.4.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/76/65/21b3bc86aac7b8f2862db1e808f1ea22b028e30a225a34a5ede9bf8678f2/numpy-2.3.5.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/12/02/7111f298e24a44d6fa4b75b47d93eccf444e5afbcee5b04aac760ee48935/numpy-2.4.0rc1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/a4/7a/6a3d14e205d292b738db449d0de649b373a59edb0d0b4493821d0a3e8718/numpy-2.4.0.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/24/62/ae72ff66c0f1fd959925b4c11f8c2dea61f47f6acaea75a08512cdfe3fed/numpy-2.4.1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/57/fd/0005efbd0af48e55eb3c7208af93f2862d4b1a56cd78e84309a2d959208d/numpy-2.4.2.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/10/8b/c265f4823726ab832de836cdd184d0986dcf94480f81e8739692a7ac7af2/numpy-2.4.3.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/d7/9f/b8cef5bffa569759033adda9481211426f12f53299629b410340795c2514/numpy-2.4.4.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/50/8e/b8041bc719f056afd864478029d52214789341ac6583437b0ee5031e9530/numpy-2.4.5.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.11'): https://files.pythonhosted.org/packages/d0/ad/fed0499ce6a338d2a03ebae59cd15093910c8875328855781952abf6c2fe/numpy-2.4.6.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.11)
+    Link requires a different Python (3.9.20 not in: '>=3.12'): https://files.pythonhosted.org/packages/d3/e1/f2fe8f6113a657a1da83b358b16755e528a602c6976a43724a88f42b482a/numpy-2.5.0rc1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+    Link requires a different Python (3.9.20 not in: '>=3.12'): https://files.pythonhosted.org/packages/e7/05/3d27272d30698dc0ecb7fdfaa41ad70303b444f81722bb99bce1d818638a/numpy-2.5.0.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+    Link requires a different Python (3.9.20 not in: '>=3.12'): https://files.pythonhosted.org/packages/22/fd/89965aa4ac08c74998539fcbf24fa3540f3e15237fbeb6bcf9c908f4aade/numpy-2.5.1.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+    Link requires a different Python (3.9.20 not in: '>=3.12'): https://files.pythonhosted.org/packages/9a/80/db0b4559e57ec36362bedbb05530a87fafbcb6067708c946967a41d449e7/numpy-2.5.2.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+    Link requires a different Python (3.9.20 not in: '>=3.12'): https://files.pythonhosted.org/packages/13/01/11703282db468b85f6f7b8c7f22d058de5970d5c7e60a3a8aaa313c3de36/numpy-2.5.3.tar.gz (from https://pypi.org/simple/numpy/) (requires-python:>=3.12)
+  Collecting numpy==1.19.3 (from oldest-supported-numpy)
+    Obtaining dependency information for numpy==1.19.3 from https://files.pythonhosted.org/packages/c3/8d/2ae53d96a92a66b8daa3dfb2dd6cf4bfcb8e3d4148bdd713c8fc7de83141/numpy-1.19.3-cp39-cp39-manylinux2010_x86_64.whl.metadata
+    Using cached numpy-1.19.3-cp39-cp39-manylinux2010_x86_64.whl.metadata (2.0 kB)
+  Using cached setuptools-68.0.0-py3-none-any.whl (804 kB)
+  Using cached Cython-0.29.30-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl (2.0 MB)
+  Downloading setuptools_scm-10.2.3-py3-none-any.whl (29 kB)
+  Using cached wheel-0.48.0-py3-none-any.whl (33 kB)
+  Using cached oldest_supported_numpy-2023.12.21-py3-none-any.whl (4.9 kB)
+  Using cached numpy-1.19.3-cp39-cp39-manylinux2010_x86_64.whl (14.9 MB)
+  Using cached extension_helpers-1.2.0-py3-none-any.whl (23 kB)
+  Using cached packaging-26.3-py3-none-any.whl (129 kB)
+  Using cached tomli-2.4.1-py3-none-any.whl (14 kB)
+  Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+  Downloading vcs_versioning-2.4.1-py3-none-any.whl (122 kB)
+  Installing collected packages: typing-extensions, tomli, setuptools, packaging, numpy, cython, wheel, vcs-versioning, oldest-supported-numpy, extension-helpers, setuptools_scm
+    Creating /tmp/pip-build-env-vpis9jod/overlay/bin
+    changing mode of /tmp/pip-build-env-vpis9jod/overlay/bin/f2py to 755
+    changing mode of /tmp/pip-build-env-vpis9jod/overlay/bin/f2py3 to 755
+    changing mode of /tmp/pip-build-env-vpis9jod/overlay/bin/f2py3.9 to 755
+    changing mode of /tmp/pip-build-env-vpis9jod/overlay/bin/cygdb to 755
+    changing mode of /tmp/pip-build-env-vpis9jod/overlay/bin/cython to 755
+    changing mode of /tmp/pip-build-env-vpis9jod/overlay/bin/cythonize to 755
+    changing mode of /tmp/pip-build-env-vpis9jod/overlay/bin/wheel to 755
+    changing mode of /tmp/pip-build-env-vpis9jod/overlay/bin/vcs-versioning to 755
+    changing mode of /tmp/pip-build-env-vpis9jod/overlay/bin/setuptools-scm to 755
+  Successfully installed cython-0.29.30 extension-helpers-1.2.0 numpy-1.19.3 oldest-supported-numpy-2023.12.21 packaging-26.3 setuptools-68.0.0 setuptools_scm-10.2.3 tomli-2.4.1 typing-extensions-4.16.0 vcs-versioning-2.4.1 wheel-0.48.0
+  WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Running command Checking if build backend supports build_editable
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Running command Getting requirements to build editable
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/setuptools/config/setupcfg.py:293: _DeprecatedConfig: Deprecated config in `setup.cfg`
+  !!
+
+          ********************************************************************************
+          The license_file parameter is deprecated, use license_files instead.
+
+          This deprecation is overdue, please update your project and remove deprecated
+          calls to avoid build errors in the future.
+
+          See https://setuptools.pypa.io/en/latest/userguide/declarative_config.html for details.
+          ********************************************************************************
+
+  !!
+    parsed = self.parsers.get(option_name, lambda x: x)(value)
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/setuptools/config/setupcfg.py:293: _DeprecatedConfig: Deprecated config in `setup.cfg`
+  !!
+
+          ********************************************************************************
+          The license_file parameter is deprecated, use license_files instead.
+
+          This deprecation is overdue, please update your project and remove deprecated
+          calls to avoid build errors in the future.
+
+          See https://setuptools.pypa.io/en/latest/userguide/declarative_config.html for details.
+          ********************************************************************************
+
+  !!
+    parsed = self.parsers.get(option_name, lambda x: x)(value)
+  running egg_info
+  writing astropy.egg-info/PKG-INFO
+  writing dependency_links to astropy.egg-info/dependency_links.txt
+  writing entry points to astropy.egg-info/entry_points.txt
+  writing requirements to astropy.egg-info/requires.txt
+  writing top-level names to astropy.egg-info/top_level.txt
+  reading manifest template 'MANIFEST.in'
+  warning: no files found matching '*.templ' under directory 'astropy'
+  warning: no files found matching 'astropy/astropy.cfg'
+  warning: no files found matching '*' under directory 'scripts'
+  warning: no files found matching '*' under directory 'static'
+  no previously-included directories found matching 'docs/_build'
+  no previously-included directories found matching 'build'
+  warning: no previously-included files matching '*.pyc' found anywhere in distribution
+  warning: no previously-included files matching '*.o' found anywhere in distribution
+  adding license file 'LICENSE.rst'
+  writing manifest file 'astropy.egg-info/SOURCES.txt'
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Running command Preparing editable metadata (pyproject.toml)
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/setuptools/config/setupcfg.py:293: _DeprecatedConfig: Deprecated config in `setup.cfg`
+  !!
+
+          ********************************************************************************
+          The license_file parameter is deprecated, use license_files instead.
+
+          This deprecation is overdue, please update your project and remove deprecated
+          calls to avoid build errors in the future.
+
+          See https://setuptools.pypa.io/en/latest/userguide/declarative_config.html for details.
+          ********************************************************************************
+
+  !!
+    parsed = self.parsers.get(option_name, lambda x: x)(value)
+  running dist_info
+  creating /tmp/pip-modern-metadata-vs1pviv7/astropy.egg-info
+  writing /tmp/pip-modern-metadata-vs1pviv7/astropy.egg-info/PKG-INFO
+  writing dependency_links to /tmp/pip-modern-metadata-vs1pviv7/astropy.egg-info/dependency_links.txt
+  writing entry points to /tmp/pip-modern-metadata-vs1pviv7/astropy.egg-info/entry_points.txt
+  writing requirements to /tmp/pip-modern-metadata-vs1pviv7/astropy.egg-info/requires.txt
+  writing top-level names to /tmp/pip-modern-metadata-vs1pviv7/astropy.egg-info/top_level.txt
+  writing manifest file '/tmp/pip-modern-metadata-vs1pviv7/astropy.egg-info/SOURCES.txt'
+  reading manifest template 'MANIFEST.in'
+  warning: no files found matching '*.templ' under directory 'astropy'
+  warning: no files found matching 'astropy/astropy.cfg'
+  warning: no files found matching '*' under directory 'scripts'
+  warning: no files found matching '*' under directory 'static'
+  no previously-included directories found matching 'docs/_build'
+  no previously-included directories found matching 'build'
+  warning: no previously-included files matching '*.pyc' found anywhere in distribution
+  warning: no previously-included files matching '*.o' found anywhere in distribution
+  adding license file 'LICENSE.rst'
+  writing manifest file '/tmp/pip-modern-metadata-vs1pviv7/astropy.egg-info/SOURCES.txt'
+  creating '/tmp/pip-modern-metadata-vs1pviv7/astropy-5.2.dev363+g621942601.d20260922.dist-info'
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/wheel/bdist_wheel.py:4: FutureWarning: The 'wheel' package is no longer the canonical location of the 'bdist_wheel' command, and will be removed in a future release. Please update to setuptools v70.1 or later which contains an integrated version of this command.
+    warn(
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: numpy>=1.18 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astropy==5.2.dev363+g621942601.d20260922) (1.25.2)
+Requirement already satisfied: pyerfa>=2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astropy==5.2.dev363+g621942601.d20260922) (2.0.0.3)
+Requirement already satisfied: PyYAML>=3.13 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astropy==5.2.dev363+g621942601.d20260922) (6.0.1)
+Requirement already satisfied: packaging>=19.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astropy==5.2.dev363+g621942601.d20260922) (23.1)
+Requirement already satisfied: pytest>=7.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astropy==5.2.dev363+g621942601.d20260922) (7.4.0)
+Requirement already satisfied: pytest-doctestplus>=0.12 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astropy==5.2.dev363+g621942601.d20260922) (1.0.0)
+Requirement already satisfied: pytest-astropy-header>=0.2.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astropy==5.2.dev363+g621942601.d20260922) (0.2.2)
+Requirement already satisfied: pytest-astropy>=0.10 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astropy==5.2.dev363+g621942601.d20260922) (0.10.0)
+Requirement already satisfied: pytest-xdist in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from astropy==5.2.dev363+g621942601.d20260922) (3.3.1)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest>=7.0->astropy==5.2.dev363+g621942601.d20260922) (2.0.0)
+Requirement already satisfied: pluggy<2.0,>=0.12 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest>=7.0->astropy==5.2.dev363+g621942601.d20260922) (1.3.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest>=7.0->astropy==5.2.dev363+g621942601.d20260922) (1.1.3)
+Requirement already satisfied: tomli>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest>=7.0->astropy==5.2.dev363+g621942601.d20260922) (2.0.1)
+Requirement already satisfied: pytest-remotedata>=0.3.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (0.4.0)
+Requirement already satisfied: pytest-openfiles>=0.3.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (0.5.0)
+Requirement already satisfied: pytest-arraydiff>=0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (0.5.0)
+Requirement already satisfied: pytest-filter-subpackage>=0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (0.1.2)
+Requirement already satisfied: pytest-cov>=2.3.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (4.1.0)
+Requirement already satisfied: pytest-mock>=2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (3.11.1)
+Requirement already satisfied: attrs>=19.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (23.1.0)
+Requirement already satisfied: hypothesis>=5.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (6.82.6)
+Requirement already satisfied: setuptools>=30.3.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-doctestplus>=0.12->astropy==5.2.dev363+g621942601.d20260922) (68.0.0)
+Requirement already satisfied: execnet>=1.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-xdist->astropy==5.2.dev363+g621942601.d20260922) (2.0.2)
+Requirement already satisfied: sortedcontainers<3.0.0,>=2.1.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from hypothesis>=5.1->pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (2.4.0)
+Requirement already satisfied: coverage>=5.2.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from coverage[toml]>=5.2.1->pytest-cov>=2.3.1->pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (7.6.2)
+Requirement already satisfied: psutil in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest-openfiles>=0.3.1->pytest-astropy>=0.10->astropy==5.2.dev363+g621942601.d20260922) (5.9.5)
+Building wheels for collected packages: astropy
+  Building editable for astropy (pyproject.toml): started
+  Running command Building editable for astropy (pyproject.toml)
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/setuptools/config/setupcfg.py:293: _DeprecatedConfig: Deprecated config in `setup.cfg`
+  !!
+
+          ********************************************************************************
+          The license_file parameter is deprecated, use license_files instead.
+
+          This deprecation is overdue, please update your project and remove deprecated
+          calls to avoid build errors in the future.
+
+          See https://setuptools.pypa.io/en/latest/userguide/declarative_config.html for details.
+          ********************************************************************************
+
+  !!
+    parsed = self.parsers.get(option_name, lambda x: x)(value)
+  running editable_wheel
+  creating /tmp/pip-wheel-na42thfp/.tmp-wpdi29es/astropy.egg-info
+  writing /tmp/pip-wheel-na42thfp/.tmp-wpdi29es/astropy.egg-info/PKG-INFO
+  writing dependency_links to /tmp/pip-wheel-na42thfp/.tmp-wpdi29es/astropy.egg-info/dependency_links.txt
+  writing entry points to /tmp/pip-wheel-na42thfp/.tmp-wpdi29es/astropy.egg-info/entry_points.txt
+  writing requirements to /tmp/pip-wheel-na42thfp/.tmp-wpdi29es/astropy.egg-info/requires.txt
+  writing top-level names to /tmp/pip-wheel-na42thfp/.tmp-wpdi29es/astropy.egg-info/top_level.txt
+  writing manifest file '/tmp/pip-wheel-na42thfp/.tmp-wpdi29es/astropy.egg-info/SOURCES.txt'
+  reading manifest template 'MANIFEST.in'
+  warning: no files found matching '*.templ' under directory 'astropy'
+  warning: no files found matching 'astropy/astropy.cfg'
+  warning: no files found matching '*' under directory 'scripts'
+  warning: no files found matching '*' under directory 'static'
+  no previously-included directories found matching 'docs/_build'
+  no previously-included directories found matching 'build'
+  warning: no previously-included files matching '*.pyc' found anywhere in distribution
+  warning: no previously-included files matching '*.o' found anywhere in distribution
+  adding license file 'LICENSE.rst'
+  writing manifest file '/tmp/pip-wheel-na42thfp/.tmp-wpdi29es/astropy.egg-info/SOURCES.txt'
+  creating '/tmp/pip-wheel-na42thfp/.tmp-wpdi29es/astropy-5.2.dev363+g621942601.d20260922.dist-info'
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/wheel/bdist_wheel.py:4: FutureWarning: The 'wheel' package is no longer the canonical location of the 'bdist_wheel' command, and will be removed in a future release. Please update to setuptools v70.1 or later which contains an integrated version of this command.
+    warn(
+  creating /tmp/pip-wheel-na42thfp/.tmp-wpdi29es/astropy-5.2.dev363+g621942601.d20260922.dist-info/WHEEL
+  running build_py
+  running build_ext
+  skipping 'astropy/table/_np_utils.c' Cython extension (up-to-date)
+  skipping 'astropy/table/_column_mixins.c' Cython extension (up-to-date)
+  skipping 'astropy/io/ascii/cparser.c' Cython extension (up-to-date)
+  skipping 'astropy/timeseries/periodograms/bls/_impl.c' Cython extension (up-to-date)
+  skipping './astropy/stats/_stats.c' Cython extension (up-to-date)
+  skipping './astropy/cosmology/flrw/scalar_inv_efuncs.c' Cython extension (up-to-date)
+  skipping './astropy/io/fits/_utils.c' Cython extension (up-to-date)
+  skipping './astropy/timeseries/periodograms/lombscargle/implementations/cython_impl.c' Cython extension (up-to-date)
+  building 'astropy.convolution._convolve' extension
+  creating /tmp/tmp8438439t.build-temp/astropy
+  creating /tmp/tmp8438439t.build-temp/astropy/convolution
+  creating /tmp/tmp8438439t.build-temp/astropy/convolution/src
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/convolution/src/convolve.c -o /tmp/tmp8438439t.build-temp/astropy/convolution/src/convolve.o -UNDEBUG -fPIC
+  creating /tmp/tmp6bqcnxf6.build-lib/astropy/convolution
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -shared -Wl,-rpath,/opt/miniconda3/envs/testbed/lib -Wl,-rpath-link,/opt/miniconda3/envs/testbed/lib -L/opt/miniconda3/envs/testbed/lib -L/opt/miniconda3/envs/testbed/lib -Wl,-rpath,/opt/miniconda3/envs/testbed/lib -Wl,-rpath-link,/opt/miniconda3/envs/testbed/lib -L/opt/miniconda3/envs/testbed/lib /tmp/tmp8438439t.build-temp/astropy/convolution/src/convolve.o -o /tmp/tmp6bqcnxf6.build-lib/astropy/convolution/_convolve.cpython-39-x86_64-linux-gnu.so
+  building 'astropy.wcs._wcs' extension
+  creating /tmp/tmp8438439t.build-temp/astropy/wcs
+  creating /tmp/tmp8438439t.build-temp/astropy/wcs/src
+  creating /tmp/tmp8438439t.build-temp/cextern
+  creating /tmp/tmp8438439t.build-temp/cextern/wcslib
+  creating /tmp/tmp8438439t.build-temp/cextern/wcslib/C
+  creating /tmp/tmp8438439t.build-temp/cextern/wcslib/C/flexed
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/astropy_wcs.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/astropy_wcs.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/astropy_wcs_api.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/astropy_wcs_api.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/distortion.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/distortion.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/distortion_wrap.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/distortion_wrap.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/docstrings.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/docstrings.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/pipeline.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/pipeline.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/pyutil.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/pyutil.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  In file included from /usr/include/string.h:535,
+                   from /opt/miniconda3/envs/testbed/include/python3.9/Python.h:30,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:13,
+                   from astropy/wcs/src/pyutil.c:9:
+  In function ‘strncpy’,
+      inlined from ‘set_pscards’ at astropy/wcs/src/pyutil.c:807:5:
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h:95:10: warning: ‘__builtin_strncpy’ specified bound 72 equals destination size [-Wstringop-truncation]
+     95 |   return __builtin___strncpy_chk (__dest, __src, __len,
+        |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     96 |                                   __glibc_objsize (__dest));
+        |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/sip.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/sip.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/sip_wrap.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/sip_wrap.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/str_list_proxy.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/str_list_proxy.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/unit_list_proxy.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/unit_list_proxy.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/util.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/util.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/wcslib_auxprm_wrap.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/wcslib_auxprm_wrap.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/wcslib_celprm_wrap.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/wcslib_celprm_wrap.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  astropy/wcs/src/wcslib_celprm_wrap.c: In function ‘PyCelprm_deepcopy’:
+  astropy/wcs/src/wcslib_celprm_wrap.c:167:22: warning: initialization of ‘PyCelprm *’ from incompatible pointer type ‘PyObject *’ {aka ‘struct _object *’} [-Wincompatible-pointer-types]
+    167 |     PyCelprm* copy = PyCelprm_new(&PyCelprmType, NULL, NULL);
+        |                      ^~~~~~~~~~~~
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_celprm_wrap.c:3:
+  astropy/wcs/src/wcslib_celprm_wrap.c: In function ‘PyCelprm_set_ref’:
+  astropy/wcs/src/wcslib_celprm_wrap.c:327:25: warning: passing argument 1 of ‘PyArray_DIMS’ from incompatible pointer type [-Wincompatible-pointer-types]
+    327 |     size = PyArray_SIZE(value_array);
+        |                         ^~~~~~~~~~~
+        |                         |
+        |                         PyObject * {aka struct _object *}
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:73:59: note: in definition of macro ‘PyArray_SIZE’
+     73 | #define PyArray_SIZE(m) PyArray_MultiplyList(PyArray_DIMS(m), PyArray_NDIM(m))
+        |                                                           ^
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_celprm_wrap.c:3:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1487:29: note: expected ‘PyArrayObject *’ {aka ‘struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1487 | PyArray_DIMS(PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~^~~
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_celprm_wrap.c:3:
+  astropy/wcs/src/wcslib_celprm_wrap.c:327:25: warning: passing argument 1 of ‘PyArray_NDIM’ from incompatible pointer type [-Wincompatible-pointer-types]
+    327 |     size = PyArray_SIZE(value_array);
+        |                         ^~~~~~~~~~~
+        |                         |
+        |                         PyObject * {aka struct _object *}
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:73:76: note: in definition of macro ‘PyArray_SIZE’
+     73 | #define PyArray_SIZE(m) PyArray_MultiplyList(PyArray_DIMS(m), PyArray_NDIM(m))
+        |                                                                            ^
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_celprm_wrap.c:3:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1469:35: note: expected ‘const PyArrayObject *’ {aka ‘const struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1469 | PyArray_NDIM(const PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~~~~~~~^~~
+  astropy/wcs/src/wcslib_celprm_wrap.c:348:35: warning: passing argument 1 of ‘PyArray_DATA’ from incompatible pointer type [-Wincompatible-pointer-types]
+    348 |     data = (double*) PyArray_DATA(value_array);
+        |                                   ^~~~~~~~~~~
+        |                                   |
+        |                                   PyObject * {aka struct _object *}
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_celprm_wrap.c:3:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1475:29: note: expected ‘PyArrayObject *’ {aka ‘struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1475 | PyArray_DATA(PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~^~~
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/wcslib_prjprm_wrap.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/wcslib_prjprm_wrap.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  astropy/wcs/src/wcslib_prjprm_wrap.c: In function ‘PyPrjprm_deepcopy’:
+  astropy/wcs/src/wcslib_prjprm_wrap.c:149:22: warning: initialization of ‘PyPrjprm *’ from incompatible pointer type ‘PyObject *’ {aka ‘struct _object *’} [-Wincompatible-pointer-types]
+    149 |     PyPrjprm* copy = PyPrjprm_new(&PyPrjprmType, NULL, NULL);
+        |                      ^~~~~~~~~~~~
+  astropy/wcs/src/wcslib_prjprm_wrap.c: In function ‘PyPrjprm_get_pv’:
+  astropy/wcs/src/wcslib_prjprm_wrap.c:517:14: warning: assignment to ‘PyObject *’ {aka ‘struct _object *’} from incompatible pointer type ‘PyArrayObject *’ {aka ‘struct tagPyArrayObject *’} [-Wincompatible-pointer-types]
+    517 |     pv_array = (PyArrayObject*) PyArray_SimpleNew(1, &size, NPY_DOUBLE);
+        |              ^
+  astropy/wcs/src/wcslib_prjprm_wrap.c:519:33: warning: passing argument 1 of ‘PyArray_DATA’ from incompatible pointer type [-Wincompatible-pointer-types]
+    519 |     pv = (double*) PyArray_DATA(pv_array);
+        |                                 ^~~~~~~~
+        |                                 |
+        |                                 PyObject * {aka struct _object *}
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1475:29: note: expected ‘PyArrayObject *’ {aka ‘struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1475 | PyArray_DATA(PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~^~~
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  astropy/wcs/src/wcslib_prjprm_wrap.c: In function ‘PyPrjprm_set_pv’:
+  astropy/wcs/src/wcslib_prjprm_wrap.c:556:25: warning: passing argument 1 of ‘PyArray_DIMS’ from incompatible pointer type [-Wincompatible-pointer-types]
+    556 |     size = PyArray_SIZE(value_array);
+        |                         ^~~~~~~~~~~
+        |                         |
+        |                         PyObject * {aka struct _object *}
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:73:59: note: in definition of macro ‘PyArray_SIZE’
+     73 | #define PyArray_SIZE(m) PyArray_MultiplyList(PyArray_DIMS(m), PyArray_NDIM(m))
+        |                                                           ^
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1487:29: note: expected ‘PyArrayObject *’ {aka ‘struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1487 | PyArray_DIMS(PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~^~~
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  astropy/wcs/src/wcslib_prjprm_wrap.c:556:25: warning: passing argument 1 of ‘PyArray_NDIM’ from incompatible pointer type [-Wincompatible-pointer-types]
+    556 |     size = PyArray_SIZE(value_array);
+        |                         ^~~~~~~~~~~
+        |                         |
+        |                         PyObject * {aka struct _object *}
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:73:76: note: in definition of macro ‘PyArray_SIZE’
+     73 | #define PyArray_SIZE(m) PyArray_MultiplyList(PyArray_DIMS(m), PyArray_NDIM(m))
+        |                                                                            ^
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1469:35: note: expected ‘const PyArrayObject *’ {aka ‘const struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1469 | PyArray_NDIM(const PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~~~~~~~^~~
+  astropy/wcs/src/wcslib_prjprm_wrap.c:583:35: warning: passing argument 1 of ‘PyArray_DATA’ from incompatible pointer type [-Wincompatible-pointer-types]
+    583 |     data = (double*) PyArray_DATA(value_array);
+        |                                   ^~~~~~~~~~~
+        |                                   |
+        |                                   PyObject * {aka struct _object *}
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1475:29: note: expected ‘PyArrayObject *’ {aka ‘struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1475 | PyArray_DATA(PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~^~~
+  astropy/wcs/src/wcslib_prjprm_wrap.c: In function ‘PyPrjprm_get_pvi’:
+  astropy/wcs/src/wcslib_prjprm_wrap.c:615:15: warning: unused variable ‘value’ [-Wunused-variable]
+    615 |     PyObject* value = NULL;
+        |               ^~~~~
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  astropy/wcs/src/wcslib_prjprm_wrap.c: In function ‘PyPrjprm_set_pvi’:
+  astropy/wcs/src/wcslib_prjprm_wrap.c:712:29: warning: passing argument 1 of ‘PyArray_DIMS’ from incompatible pointer type [-Wincompatible-pointer-types]
+    712 |         size = PyArray_SIZE(value_array);
+        |                             ^~~~~~~~~~~
+        |                             |
+        |                             PyObject * {aka struct _object *}
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:73:59: note: in definition of macro ‘PyArray_SIZE’
+     73 | #define PyArray_SIZE(m) PyArray_MultiplyList(PyArray_DIMS(m), PyArray_NDIM(m))
+        |                                                           ^
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1487:29: note: expected ‘PyArrayObject *’ {aka ‘struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1487 | PyArray_DIMS(PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~^~~
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  astropy/wcs/src/wcslib_prjprm_wrap.c:712:29: warning: passing argument 1 of ‘PyArray_NDIM’ from incompatible pointer type [-Wincompatible-pointer-types]
+    712 |         size = PyArray_SIZE(value_array);
+        |                             ^~~~~~~~~~~
+        |                             |
+        |                             PyObject * {aka struct _object *}
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:73:76: note: in definition of macro ‘PyArray_SIZE’
+     73 | #define PyArray_SIZE(m) PyArray_MultiplyList(PyArray_DIMS(m), PyArray_NDIM(m))
+        |                                                                            ^
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1469:35: note: expected ‘const PyArrayObject *’ {aka ‘const struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1469 | PyArray_NDIM(const PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~~~~~~~^~~
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  astropy/wcs/src/wcslib_prjprm_wrap.c:720:48: warning: passing argument 1 of ‘PyArray_DATA’ from incompatible pointer type [-Wincompatible-pointer-types]
+    720 |         scalar = PyArray_ToScalar(PyArray_DATA(value_array), value_array);
+        |                                                ^~~~~~~~~~~
+        |                                                |
+        |                                                PyObject * {aka struct _object *}
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:129:24: note: in definition of macro ‘PyArray_ToScalar’
+    129 |         PyArray_Scalar(data, PyArray_DESCR(arr), (PyObject *)arr)
+        |                        ^~~~
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1475:29: note: expected ‘PyArrayObject *’ {aka ‘struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1475 | PyArray_DATA(PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~^~~
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  astropy/wcs/src/wcslib_prjprm_wrap.c:720:62: warning: passing argument 1 of ‘PyArray_DESCR’ from incompatible pointer type [-Wincompatible-pointer-types]
+    720 |         scalar = PyArray_ToScalar(PyArray_DATA(value_array), value_array);
+        |                                                              ^~~~~~~~~~~
+        |                                                              |
+        |                                                              PyObject * {aka struct _object *}
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:129:44: note: in definition of macro ‘PyArray_ToScalar’
+    129 |         PyArray_Scalar(data, PyArray_DESCR(arr), (PyObject *)arr)
+        |                                            ^~~
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1517:30: note: expected ‘PyArrayObject *’ {aka ‘struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1517 | PyArray_DESCR(PyArrayObject *arr)
+        |               ~~~~~~~~~~~~~~~^~~
+  astropy/wcs/src/wcslib_prjprm_wrap.c: In function ‘PyPrjprm_get_w’:
+  astropy/wcs/src/wcslib_prjprm_wrap.c:780:32: warning: passing argument 1 of ‘PyArray_DATA’ from incompatible pointer type [-Wincompatible-pointer-types]
+    780 |     w = (double*) PyArray_DATA(w_array);
+        |                                ^~~~~~~
+        |                                |
+        |                                PyObject * {aka struct _object *}
+  In file included from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                   from /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:16,
+                   from astropy/wcs/include/astropy_wcs/wcslib_celprm_wrap.h:4,
+                   from astropy/wcs/src/wcslib_prjprm_wrap.c:5:
+  /tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include/numpy/ndarraytypes.h:1475:29: note: expected ‘PyArrayObject *’ {aka ‘struct tagPyArrayObject *’} but argument is of type ‘PyObject *’ {aka ‘struct _object *’}
+   1475 | PyArray_DATA(PyArrayObject *arr)
+        |              ~~~~~~~~~~~~~~~^~~
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/wcslib_tabprm_wrap.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/wcslib_tabprm_wrap.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/wcslib_wrap.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/wcslib_wrap.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  astropy/wcs/src/wcslib_wrap.c: In function ‘PyWcsprm_copy’:
+  astropy/wcs/src/wcslib_wrap.c:634:24: warning: unused variable ‘wtb0’ [-Wunused-variable]
+    634 |   struct wtbarr *wtb, *wtb0;
+        |                        ^~~~
+  astropy/wcs/src/wcslib_wrap.c:634:18: warning: unused variable ‘wtb’ [-Wunused-variable]
+    634 |   struct wtbarr *wtb, *wtb0;
+        |                  ^~~
+  astropy/wcs/src/wcslib_wrap.c:633:38: warning: unused variable ‘ndim’ [-Wunused-variable]
+    633 |   int           status, nelem, i, j, ndim;
+        |                                      ^~~~
+  astropy/wcs/src/wcslib_wrap.c:633:35: warning: unused variable ‘j’ [-Wunused-variable]
+    633 |   int           status, nelem, i, j, ndim;
+        |                                   ^
+  astropy/wcs/src/wcslib_wrap.c:633:32: warning: unused variable ‘i’ [-Wunused-variable]
+    633 |   int           status, nelem, i, j, ndim;
+        |                                ^
+  astropy/wcs/src/wcslib_wrap.c:633:25: warning: unused variable ‘nelem’ [-Wunused-variable]
+    633 |   int           status, nelem, i, j, ndim;
+        |                         ^~~~~
+  In file included from /usr/include/string.h:535,
+                   from /opt/miniconda3/envs/testbed/include/python3.9/Python.h:30,
+                   from astropy/wcs/include/astropy_wcs/pyutil.h:13,
+                   from astropy/wcs/include/astropy_wcs/wcslib_wrap.h:8,
+                   from astropy/wcs/src/wcslib_wrap.c:8:
+  In function ‘strncpy’,
+      inlined from ‘PyWcsprm_sptr’ at astropy/wcs/src/wcslib_wrap.c:1757:3:
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h:95:10: warning: ‘__builtin_strncpy’ specified bound 9 equals destination size [-Wstringop-truncation]
+     95 |   return __builtin___strncpy_chk (__dest, __src, __len,
+        |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     96 |                                   __glibc_objsize (__dest));
+        |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c astropy/wcs/src/wcslib_wtbarr_wrap.c -o /tmp/tmp8438439t.build-temp/astropy/wcs/src/wcslib_wtbarr_wrap.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  astropy/wcs/src/wcslib_wtbarr_wrap.c:208:3: warning: initialization of ‘int (*)(PyObject *, int (*)(PyObject *, void *), void *)’ {aka ‘int (*)(struct _object *, int (*)(struct _object *, void *), void *)’} from incompatible pointer type ‘int (*)(PyWtbarr *, int (*)(PyObject *, void *), void *)’ {aka ‘int (*)(PyWtbarr *, int (*)(struct _object *, void *), void *)’} [-Wincompatible-pointer-types]
+    208 |   PyWtbarr_traverse,            /* tp_traverse */
+        |   ^~~~~~~~~~~~~~~~~
+  astropy/wcs/src/wcslib_wtbarr_wrap.c:208:3: note: (near initialization for ‘PyWtbarrType.tp_traverse’)
+  astropy/wcs/src/wcslib_wtbarr_wrap.c:209:3: warning: initialization of ‘int (*)(PyObject *)’ {aka ‘int (*)(struct _object *)’} from incompatible pointer type ‘int (*)(PyWtbarr *)’ [-Wincompatible-pointer-types]
+    209 |   PyWtbarr_clear,               /* tp_clear */
+        |   ^~~~~~~~~~~~~~
+  astropy/wcs/src/wcslib_wtbarr_wrap.c:209:3: note: (near initialization for ‘PyWtbarrType.tp_clear’)
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c cextern/wcslib/C/cel.c -o /tmp/tmp8438439t.build-temp/cextern/wcslib/C/cel.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c cextern/wcslib/C/dis.c -o /tmp/tmp8438439t.build-temp/cextern/wcslib/C/dis.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c cextern/wcslib/C/flexed/wcsbth.c -o /tmp/tmp8438439t.build-temp/cextern/wcslib/C/flexed/wcsbth.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c cextern/wcslib/C/flexed/wcspih.c -o /tmp/tmp8438439t.build-temp/cextern/wcslib/C/flexed/wcspih.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c cextern/wcslib/C/flexed/wcsulex.c -o /tmp/tmp8438439t.build-temp/cextern/wcslib/C/flexed/wcsulex.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c cextern/wcslib/C/flexed/wcsutrn.c -o /tmp/tmp8438439t.build-temp/cextern/wcslib/C/flexed/wcsutrn.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c cextern/wcslib/C/lin.c -o /tmp/tmp8438439t.build-temp/cextern/wcslib/C/lin.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c cextern/wcslib/C/log.c -o /tmp/tmp8438439t.build-temp/cextern/wcslib/C/log.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized
+  gcc -pthread -B /opt/miniconda3/envs/testbed/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -I/opt/miniconda3/envs/testbed/include -fPIC -O2 -isystem /opt/miniconda3/envs/testbed/include -fPIC -DECHO -DWCSTRIG_MACRO -DASTROPY_WCS_BUILD -D_GNU_SOURCE -DNDEBUG -DHAVE_SINCOS -UDEBUG -I/tmp/pip-build-env-vpis9jod/overlay/lib/python3.9/site-packages/numpy/core/include -Icextern/wcslib/C -Iastropy/wcs/include -I/opt/miniconda3/envs/testbed/include/python3.9 -c cextern/wcslib/C/prj.c -o /tmp/tmp8438439t.build-temp/cextern/wcslib/C/prj.o -std=gnu99 -Wno-strict-prototypes -Wno-unused-function -Wno-unused-value -Wno-uninitialized

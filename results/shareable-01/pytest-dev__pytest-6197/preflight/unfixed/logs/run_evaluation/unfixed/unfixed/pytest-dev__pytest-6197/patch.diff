@@ -1,0 +1,10 @@
+diff --git a/src/_pytest/pytester.py b/src/_pytest/pytester.py
+index e1db9b17b..9b5651c87 100644
+--- a/src/_pytest/pytester.py
++++ b/src/_pytest/pytester.py
+@@ -1375,3 +1375,5 @@ class LineMatcher:
+             else:
+                 self._log("remains unmatched: {!r}".format(line))
+                 pytest.fail(self._log_text)
++
++# Unfixed grading control.

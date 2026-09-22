@@ -1,0 +1,51 @@
+{
+  "created_at": "2026-09-22T09:18:44.128581+00:00",
+  "tasks": [
+    "django__django-13344",
+    "django__django-15128",
+    "astropy__astropy-13579",
+    "scikit-learn__scikit-learn-25102",
+    "pytest-dev__pytest-6197"
+  ],
+  "arms": [
+    "cheap_only",
+    "jev_cascade",
+    "strong"
+  ],
+  "parallel_paid_jobs": 15,
+  "parallel_official_graders": 2,
+  "models": {
+    "cheap": {
+      "provider": "openai",
+      "name": "gpt-5.6-luna",
+      "prices": {
+        "input": 0.2,
+        "cached": 0.02,
+        "output": 1.2
+      }
+    },
+    "strong": {
+      "provider": "openai",
+      "name": "gpt-6-astra",
+      "prices": {
+        "input": 10.0,
+        "cached": 1.0,
+        "output": 50.0
+      }
+    },
+    "jev": {
+      "name": "jev-1.13.0",
+      "input_price": 0.042
+    }
+  },
+  "budgets": {
+    "cheap_only": 3.0,
+    "jev_cascade": 3.0,
+    "strong": 12.0
+  },
+  "policy": "32 coding calls, 6 official grading attempts, 4-call JEV reassessment, at most 4 strong diagnostic calls in the JEV arm.",
+  "isolation": "Fresh Docker checkout and stateless provider requests for every task/arm pair.",
+  "grading": "Official SWE-bench tests on every candidate; scikit-learn also requires two preserved regression probes.",
+  "cost_scope": "Provider inference only; excludes Docker/host compute and engineering time.",
+  "warning": "Five known development examples, not a statistically significant or blind benchmark."
+}

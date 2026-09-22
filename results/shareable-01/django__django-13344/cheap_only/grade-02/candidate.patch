@@ -1,0 +1,20 @@
+diff --git a/django/utils/deprecation.py b/django/utils/deprecation.py
+index b2c681b33c..2387e8cdb2 100644
+--- a/django/utils/deprecation.py
++++ b/django/utils/deprecation.py
+@@ -89,6 +89,15 @@ class MiddlewareMixin:
+     sync_capable = True
+     async_capable = True
+ 
++    def __init_subclass__(cls, **kwargs):
++        super().__init_subclass__(**kwargs)
++        init = cls.__dict__.get('__init__')
++        if init is not None:
++            def wrapped_init(self, *args, **kwargs):
++                init(self, *args, **kwargs)
++                self._async_check()
++            cls.__init__ = wrapped_init
++
+     # RemovedInDjango40Warning: when the deprecation ends, replace with:
+     #   def __init__(self, get_response):
+     def __init__(self, get_response=None):

@@ -1,0 +1,24 @@
+<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/yt/packages/requests/__init__.py:115: RequestsDependencyWarning: urllib3 (1.26.16) or chardet (7.6.0)/charset_normalizer (3.5.1) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+<frozen runpy>:128: RuntimeWarning: 'swebench.harness.run_evaluation' found in sys.modules after import of package 'swebench.harness', but prior to execution of 'swebench.harness.run_evaluation'; this may result in unpredictable behaviour
+Found 1 existing instance images. Will reuse them.
+Running 1 instances...
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+100%|██████████| 1/1 [02:00<00:00, 120.28s/it]
+1 ran successfully, 0 failed: 100%|██████████| 1/1 [02:00<00:00, 120.28s/it]
+1 ran successfully, 0 failed: 100%|██████████| 1/1 [02:00<00:00, 120.28s/it]
+All instances run.
+Cleaning cached images...
+Removed 0 images.
+Total instances: 1
+Instances submitted: 1
+Instances completed: 1
+Instances incomplete: 0
+Instances resolved: 1
+Instances unresolved: 0
+Instances with empty patches: 0
+Instances with errors: 0
+Unstopped containers: 0
+Unremoved images: 0
+Report written to official-2cf1ddd5ab.official-2cf1ddd5ab.json

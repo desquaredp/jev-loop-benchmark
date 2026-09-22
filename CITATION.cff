@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+title: JEV-led Repair Loop Benchmark
+message: If you use this harness or its results, please cite this repository.
+type: software
+authors:
+  - name: Contributors
+license: MIT
+date-released: 2026-09-22

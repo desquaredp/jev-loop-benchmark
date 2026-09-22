@@ -1,0 +1,6 @@
+Case,Cheap-only,JEV-led,Strong-only
+Django 13344,Pass · $0.063 · 13 calls · 1:57 agent,Pass · $0.331 · 2/4/10 calls · 1:47 agent,Pass · $1.163 · 5 calls · 1:27 agent
+Django 15128,Pass · $0.028 · 6 calls · 1:33 agent,Pass · $0.410 · 3/4/10 calls · 2:14 agent,Pass · $1.454 · 6 calls · 1:41 agent
+Astropy 13579,Pass · $0.017 · 4 calls · 1:03 agent,Pass · $0.382 · 3/3/10 calls · 2:07 agent,Pass · $0.685 · 3 calls · 1:10 agent
+Scikit-learn 25102,Fail · $0.238 · 32 calls · 6:13 agent,Pass · $0.414 · 2/4/10 calls · 1:33 agent,Pass · $2.023 · 8 calls · 2:00 agent
+Pytest 6197,Fail · $0.122 · 32 calls · 3:45 agent,Pass · $0.464 · 2/4/10 calls · 1:43 agent,Pass · $1.060 · 5 calls · 1:19 agent

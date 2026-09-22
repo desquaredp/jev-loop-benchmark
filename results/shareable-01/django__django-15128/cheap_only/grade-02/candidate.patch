@@ -1,0 +1,33 @@
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index aaf35ee37c..a95ed4d5de 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -572,7 +572,27 @@ class Query(BaseExpression):
+         if self.distinct_fields != rhs.distinct_fields:
+             raise TypeError('Cannot combine queries with different distinct fields.')
+ 
+-        # Work out how to relabel the rhs aliases, if necessary.
++        # Work out how to relabel the rhs aliases, if necessary. The aliases
++        # generated while adding rhs joins must not collide with aliases in
++        # rhs itself. Otherwise a mapping such as T4 -> T5, T5 -> T6 can be
++        # produced and relabelling a nested query would change an alias twice.
++        # Keep the base table alias unchanged, as it is shared by both queries,
++        # and give the other rhs aliases names that cannot be generated while
++        # adding the rhs joins to the current query.
++        rhs = rhs.clone()
++        rhs_aliases = list(rhs.alias_map)
++        used_aliases = set(self.alias_map) | set(rhs_aliases)
++        rhs_change_map = {}
++        alias_number = 0
++        for alias in rhs_aliases[1:]:
++            while '%s%d' % (rhs.alias_prefix, alias_number) in used_aliases:
++                alias_number += 1
++            new_alias = '%s%d' % (rhs.alias_prefix, alias_number)
++            rhs_change_map[alias] = new_alias
++            used_aliases.add(new_alias)
++            alias_number += 1
++        if rhs_change_map:
++            rhs.change_aliases(rhs_change_map)
+         change_map = {}
+         conjunction = (connector == AND)
+ 

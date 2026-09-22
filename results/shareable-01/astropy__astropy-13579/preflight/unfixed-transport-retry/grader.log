@@ -1,0 +1,39 @@
+<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/yt/packages/requests/__init__.py:115: RequestsDependencyWarning: urllib3 (1.26.16) or chardet (7.6.0)/charset_normalizer (3.5.1) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+<frozen runpy>:128: RuntimeWarning: 'swebench.harness.run_evaluation' found in sys.modules after import of package 'swebench.harness', but prior to execution of 'swebench.harness.run_evaluation'; this may result in unpredictable behaviour
+Found 1 existing instance images. Will reuse them.
+Running 1 instances...
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+  0%|          | 0/1 [01:32<?, ?it/s]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/swebench/harness/run_evaluation.py", line 433, in <module>
+    main(**vars(args))
+    ~~~~^^^^^^^^^^^^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/swebench/harness/run_evaluation.py", line 325, in main
+    run_instances(
+    ~~~~~~~~~~~~~^
+        predictions,
+        ^^^^^^^^^^^^
+    ...<9 lines>...
+        rewrite_reports=rewrite_reports,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/swebench/harness/run_evaluation.py", line 126, in run_instances
+    run_threadpool(run_instance, payloads, max_workers)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<home>/dev/jev-cascade/.venv/lib/python3.13/site-packages/swebench/harness/utils.py", line 90, in run_threadpool
+    for future in as_completed(futures):
+                  ~~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/concurrent/futures/_base.py", line 243, in as_completed
+    waiter.event.wait(wait_timeout)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 659, in wait
+    signaled = self._cond.wait(timeout)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 359, in wait
+    waiter.acquire()
+    ~~~~~~~~~~~~~~^^
+KeyboardInterrupt

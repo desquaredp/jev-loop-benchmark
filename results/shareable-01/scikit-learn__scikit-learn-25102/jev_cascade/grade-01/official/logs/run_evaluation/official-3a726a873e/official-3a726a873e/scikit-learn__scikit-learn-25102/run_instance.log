@@ -1,0 +1,149 @@
+2026-09-22 02:23:55,965 - INFO - Creating container for scikit-learn__scikit-learn-25102...
+2026-09-22 02:23:55,992 - INFO - Container for scikit-learn__scikit-learn-25102 created: 4f0c4b2abbdd9cf3d6cd775d37b3b3c23b11f9b0f57609e9da35c06442a8a3a3
+2026-09-22 02:23:56,169 - INFO - Container for scikit-learn__scikit-learn-25102 started: 4f0c4b2abbdd9cf3d6cd775d37b3b3c23b11f9b0f57609e9da35c06442a8a3a3
+2026-09-22 02:23:56,169 - INFO - Intermediate patch for scikit-learn__scikit-learn-25102 written to logs/run_evaluation/official-3a726a873e/official-3a726a873e/scikit-learn__scikit-learn-25102/patch.diff, now applying to container...
+2026-09-22 02:23:56,360 - INFO - >>>>> Applied Patch:
+Checking patch sklearn/feature_selection/_base.py...
+Applied patch sklearn/feature_selection/_base.py cleanly.
+
+2026-09-22 02:23:57,196 - INFO - Git diff before:
+diff --git a/sklearn/feature_selection/_base.py b/sklearn/feature_selection/_base.py
+index da2185eac..4d35fdca1 100644
+--- a/sklearn/feature_selection/_base.py
++++ b/sklearn/feature_selection/_base.py
+@@ -14,9 +14,10 @@ from ..base import TransformerMixin
+ from ..cross_decomposition._pls import _PLS
+ from ..utils import (
+     check_array,
+-    safe_mask,
+     safe_sqr,
+ )
++from ..utils._set_output import _get_output_config
++from ..utils import _safe_indexing
+ from ..utils._tags import _safe_tags
+ from ..utils.validation import _check_feature_names_in, check_is_fitted
+ 
+@@ -78,15 +79,25 @@ class SelectorMixin(TransformerMixin, metaclass=ABCMeta):
+         X_r : array of shape [n_samples, n_selected_features]
+             The input samples with only the selected features.
+         """
+-        # note: we use _safe_tags instead of _get_tags because this is a
+-        # public Mixin.
+-        X = self._validate_data(
+-            X,
+-            dtype=None,
+-            accept_sparse="csr",
+-            force_all_finite=not _safe_tags(self, key="allow_nan"),
+-            reset=False,
+-        )
++        # When pandas output is requested, keep the original DataFrame so
++        # that selecting columns preserves heterogeneous and extension dtypes.
++        # Validation through check_array would convert it to a homogeneous
++        # ndarray before the selection takes place.
++        output_config = _get_output_config("transform", self)
++        is_dataframe = hasattr(X, "iloc") and getattr(X, "ndim", 0) == 2
++        if output_config["dense"] == "pandas" and is_dataframe:
++            self._check_feature_names(X, reset=False)
++            self._check_n_features(X, reset=False)
++        else:
++            # note: we use _safe_tags instead of _get_tags because this is a
++            # public Mixin.
++            X = self._validate_data(
++                X,
++                dtype=None,
++                accept_sparse="csr",
++                force_all_finite=not _safe_tags(self, key="allow_nan"),
++                reset=False,
++            )
+         return self._transform(X)
+ 
+     def _transform(self, X):
+@@ -98,10 +109,12 @@ class SelectorMixin(TransformerMixin, metaclass=ABCMeta):
+                 " too noisy or the selection test too strict.",
+                 UserWarning,
+             )
++            if hasattr(X, "iloc"):
++                return X.iloc[:, :0]
+             return np.empty(0, dtype=X.dtype).reshape((X.shape[0], 0))
+         if len(mask) != X.shape[1]:
+             raise ValueError("X has a different shape than during fitting.")
+-        return X[:, safe_mask(X, mask)]
++        return _safe_indexing(X, mask, axis=1)
+ 
+     def inverse_transform(self, X):
+         """Reverse the transformation operation.
+2026-09-22 02:23:57,196 - INFO - Eval script for scikit-learn__scikit-learn-25102 written to logs/run_evaluation/official-3a726a873e/official-3a726a873e/scikit-learn__scikit-learn-25102/eval.sh; copying to container...
+2026-09-22 02:24:30,325 - INFO - Test runtime: 33.06 seconds
+2026-09-22 02:24:30,325 - INFO - Test output for scikit-learn__scikit-learn-25102 written to logs/run_evaluation/official-3a726a873e/official-3a726a873e/scikit-learn__scikit-learn-25102/test_output.txt
+2026-09-22 02:24:30,417 - INFO - Git diff after:
+diff --git a/sklearn/feature_selection/_base.py b/sklearn/feature_selection/_base.py
+index da2185eac..4d35fdca1 100644
+--- a/sklearn/feature_selection/_base.py
++++ b/sklearn/feature_selection/_base.py
+@@ -14,9 +14,10 @@ from ..base import TransformerMixin
+ from ..cross_decomposition._pls import _PLS
+ from ..utils import (
+     check_array,
+-    safe_mask,
+     safe_sqr,
+ )
++from ..utils._set_output import _get_output_config
++from ..utils import _safe_indexing
+ from ..utils._tags import _safe_tags
+ from ..utils.validation import _check_feature_names_in, check_is_fitted
+ 
+@@ -78,15 +79,25 @@ class SelectorMixin(TransformerMixin, metaclass=ABCMeta):
+         X_r : array of shape [n_samples, n_selected_features]
+             The input samples with only the selected features.
+         """
+-        # note: we use _safe_tags instead of _get_tags because this is a
+-        # public Mixin.
+-        X = self._validate_data(
+-            X,
+-            dtype=None,
+-            accept_sparse="csr",
+-            force_all_finite=not _safe_tags(self, key="allow_nan"),
+-            reset=False,
+-        )
++        # When pandas output is requested, keep the original DataFrame so
++        # that selecting columns preserves heterogeneous and extension dtypes.
++        # Validation through check_array would convert it to a homogeneous
++        # ndarray before the selection takes place.
++        output_config = _get_output_config("transform", self)
++        is_dataframe = hasattr(X, "iloc") and getattr(X, "ndim", 0) == 2
++        if output_config["dense"] == "pandas" and is_dataframe:
++            self._check_feature_names(X, reset=False)
++            self._check_n_features(X, reset=False)
++        else:
++            # note: we use _safe_tags instead of _get_tags because this is a
++            # public Mixin.
++            X = self._validate_data(
++                X,
++                dtype=None,
++                accept_sparse="csr",
++                force_all_finite=not _safe_tags(self, key="allow_nan"),
++                reset=False,
++            )
+         return self._transform(X)
+ 
+     def _transform(self, X):
+@@ -98,10 +109,12 @@ class SelectorMixin(TransformerMixin, metaclass=ABCMeta):
+                 " too noisy or the selection test too strict.",
+                 UserWarning,
+             )
++            if hasattr(X, "iloc"):
++                return X.iloc[:, :0]
+             return np.empty(0, dtype=X.dtype).reshape((X.shape[0], 0))
+         if len(mask) != X.shape[1]:
+             raise ValueError("X has a different shape than during fitting.")
+-        return X[:, safe_mask(X, mask)]
++        return _safe_indexing(X, mask, axis=1)
+ 
+     def inverse_transform(self, X):
+         """Reverse the transformation operation.
+2026-09-22 02:24:30,417 - INFO - Grading answer for scikit-learn__scikit-learn-25102...
+2026-09-22 02:24:30,418 - INFO - report: {'scikit-learn__scikit-learn-25102': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['sklearn/feature_selection/tests/test_base.py::test_output_dataframe', 'sklearn/feature_selection/tests/test_feature_select.py::test_dataframe_output_dtypes'], 'failure': []}, 'PASS_TO_PASS': {'success': ['sklearn/feature_selection/tests/test_base.py::test_transform_dense', 'sklearn/feature_selection/tests/test_base.py::test_transform_sparse', 'sklearn/feature_selection/tests/test_base.py::test_inverse_transform_dense', 'sklearn/feature_selection/tests/test_base.py::test_inverse_transform_sparse', 'sklearn/feature_selection/tests/test_base.py::test_get_support', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_oneway_vs_scipy_stats', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_oneway_ints', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_classif', 'sklearn/feature_selection/tests/test_feature_select.py::test_r_regression[True]', 'sklearn/feature_selection/tests/test_feature_select.py::test_r_regression[False]', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression_input_dtype', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression_center', 'sklearn/feature_selection/tests/test_feature_select.py::test_r_regression_force_finite[X0-y0-expected_corr_coef0-True]', 'sklearn/feature_selection/tests/test_feature_select.py::test_r_regression_force_finite[X1-y1-expected_corr_coef1-True]', 'sklearn/feature_selection/tests/test_feature_select.py::test_r_regression_force_finite[X2-y2-expected_corr_coef2-False]', 'sklearn/feature_selection/tests/test_feature_select.py::test_r_regression_force_finite[X3-y3-expected_corr_coef3-False]', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression_corner_case[X0-y0-expected_f_statistic0-expected_p_values0-True]', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression_corner_case[X1-y1-expected_f_statistic1-expected_p_values1-True]', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression_corner_case[X2-y2-expected_f_statistic2-expected_p_values2-True]', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression_corner_case[X3-y3-expected_f_statistic3-expected_p_values3-True]', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression_corner_case[X4-y4-expected_f_statistic4-expected_p_values4-False]', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression_corner_case[X5-y5-expected_f_statistic5-expected_p_values5-False]', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression_corner_case[X6-y6-expected_f_statistic6-expected_p_values6-False]', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_regression_corner_case[X7-y7-expected_f_statistic7-expected_p_values7-False]', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_classif_multi_class', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_percentile_classif', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_percentile_classif_sparse', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_kbest_classif', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_kbest_all', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_kbest_zero[float32]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_kbest_zero[float64]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_heuristics_classif', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_percentile_regression', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_percentile_regression_full', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_kbest_regression', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_heuristics_regression', 'sklearn/feature_selection/tests/test_feature_select.py::test_boundary_case_ch2', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_fdr_regression[1-0.001]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_fdr_regression[1-0.01]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_fdr_regression[1-0.1]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_fdr_regression[5-0.001]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_fdr_regression[5-0.01]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_fdr_regression[5-0.1]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_fdr_regression[10-0.001]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_fdr_regression[10-0.01]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_fdr_regression[10-0.1]', 'sklearn/feature_selection/tests/test_feature_select.py::test_select_fwe_regression', 'sklearn/feature_selection/tests/test_feature_select.py::test_selectkbest_tiebreaking', 'sklearn/feature_selection/tests/test_feature_select.py::test_selectpercentile_tiebreaking', 'sklearn/feature_selection/tests/test_feature_select.py::test_tied_pvalues', 'sklearn/feature_selection/tests/test_feature_select.py::test_scorefunc_multilabel', 'sklearn/feature_selection/tests/test_feature_select.py::test_tied_scores', 'sklearn/feature_selection/tests/test_feature_select.py::test_nans', 'sklearn/feature_selection/tests/test_feature_select.py::test_invalid_k', 'sklearn/feature_selection/tests/test_feature_select.py::test_f_classif_constant_feature', 'sklearn/feature_selection/tests/test_feature_select.py::test_no_feature_selected', 'sklearn/feature_selection/tests/test_feature_select.py::test_mutual_info_classif', 'sklearn/feature_selection/tests/test_feature_select.py::test_mutual_info_regression'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn-25102: resolved: True
+2026-09-22 02:24:30,419 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn-25102.official-3a726a873e...
+2026-09-22 02:24:45,517 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn-25102.official-3a726a873e...
+2026-09-22 02:24:45,528 - INFO - Container sweb.eval.scikit-learn__scikit-learn-25102.official-3a726a873e removed.

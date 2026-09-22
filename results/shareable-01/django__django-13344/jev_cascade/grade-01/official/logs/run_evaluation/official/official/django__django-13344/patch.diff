@@ -1,0 +1,26 @@
+diff --git a/django/utils/deprecation.py b/django/utils/deprecation.py
+index b2c681b33c..e6c5ca3e87 100644
+--- a/django/utils/deprecation.py
++++ b/django/utils/deprecation.py
+@@ -4,6 +4,8 @@ import warnings
+ 
+ from asgiref.sync import sync_to_async
+ 
++from django.utils.functional import cached_property
++
+ 
+ class RemovedInDjango40Warning(DeprecationWarning):
+     pass
+@@ -97,6 +99,12 @@ class MiddlewareMixin:
+         self._async_check()
+         super().__init__()
+ 
++    @cached_property
++    def _is_coroutine(self):
++        if asyncio.iscoroutinefunction(self.get_response):
++            return asyncio.coroutines._is_coroutine
++        return False
++
+     def _async_check(self):
+         """
+         If get_response is a coroutine function, turns us into async mode so

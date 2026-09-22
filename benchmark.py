@@ -240,6 +240,7 @@ def run_arm(run_dir, task_id, arm, settings):
     seed = [{"decision": {"action": "grade"}, "result": initial, "patch_sha256": agent.sha("")}]
     gateway = providers.Gateway()
     started = time.monotonic()
+    grading_wall_seconds = 0.0
     consultant_calls = 0
     result = None
     try:
@@ -277,6 +278,14 @@ def run_arm(run_dir, task_id, arm, settings):
             def no_route(state):
                 raise AssertionError(f"{arm} must not invoke JEV routing")
 
+            def timed_grade(directory, patch):
+                nonlocal grading_wall_seconds
+                grade_started = time.monotonic()
+                try:
+                    return grade_candidate(source, directory, task, patch)
+                finally:
+                    grading_wall_seconds += time.monotonic() - grade_started
+
             result = agent.run_session(
                 box_instance,
                 task,
@@ -284,7 +293,7 @@ def run_arm(run_dir, task_id, arm, settings):
                 arm,
                 ask,
                 route if arm == "jev_cascade" else no_route,
-                lambda directory, patch: grade_candidate(source, directory, task, patch),
+                timed_grade,
                 max_turns=32,
                 max_grades=6,
                 max_seconds=5400,
@@ -299,13 +308,16 @@ def run_arm(run_dir, task_id, arm, settings):
         "strong": sum(row.get("model") == task["strong"] for row in calls),
         "jev": sum(row.get("model") == spike.MODEL for row in calls),
     }
+    wall_seconds = time.monotonic() - started
     result.update({
         "arm": arm,
         "resolved": result.get("status") == "passed" and bool((result.get("final_grade") or {}).get("resolved")),
         "cost": sum(row.get("cost", 0) for row in calls),
         "calls": counts,
         "billing_complete": not any(row.get("billing_unknown") for row in calls),
-        "wall_seconds": time.monotonic() - started,
+        "agent_work_seconds": max(0.0, wall_seconds - grading_wall_seconds),
+        "grading_wall_seconds": grading_wall_seconds,
+        "wall_seconds": wall_seconds,
     })
     loop.write_json(out / "result.json", result)
     return result
@@ -371,7 +383,8 @@ def _cell(result, arm):
         call_text = f"{calls.get('cheap', 0)} calls"
     else:
         call_text = f"{calls.get('strong', 0)} calls"
-    return f"{outcome} · ${result.get('cost', 0):.3f} · {call_text} · {_duration(result.get('wall_seconds'))}"
+    agent_time = _duration(result.get("agent_work_seconds"))
+    return f"{outcome} · ${result.get('cost', 0):.3f} · {call_text} · {agent_time} agent"
 
 
 def collect(run_dir):

@@ -112,11 +112,11 @@ class PackageTests(unittest.TestCase):
             "status": "passed",
             "cost": .1234,
             "calls": {"cheap": 2, "strong": 1, "jev": 7},
-            "wall_seconds": 125,
+            "agent_work_seconds": 125,
         }
         self.assertEqual(
             benchmark._cell(result, "jev_cascade"),
-            "Pass · $0.123 · 2/1/7 calls · 2:05",
+            "Pass · $0.123 · 2/1/7 calls · 2:05 agent",
         )
 
 
